@@ -1,0 +1,39 @@
+{
+  "swagger": {
+    "securityDefinitions": {
+      "jwt": {
+        "type": "apiKey",
+        "name": "Authorization",
+        "in": "header"
+      },
+      "tsoa_auth": {
+        "type": "oauth2",
+        "authorizationUrl": "http://swagger.io/api/oauth/dialog",
+        "flow": "implicit",
+        "scopes": {
+          "write:pets": "modify things",
+          "read:pets": "read things"
+        }
+      }
+    },
+    "securitySchemes": {
+      "jwt": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    },
+    "outputDirectory": "./src/dist",
+    "entryFile": "./src/server.ts",
+    "basePath": "/src"
+  },
+  "routes": {
+    "authenticationModule": "./src/authentication.ts",
+    "basePath": "/src",
+    "entryFile": "./src/server.ts",
+    "routesDir": "./src"
+  },
+  "ignore": [
+    "**/node_modules/**"
+  ]
+}
